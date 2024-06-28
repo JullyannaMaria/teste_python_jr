@@ -1,18 +1,23 @@
-Segue o case:
+## Yahoo Finance Stock Screener Crawler
 
-Você é o responsável por desenvolver um crawler na linguagem Python (obrigatório usar Selenium, BeautifulSoup e orientação a objetos).
-O crawler deverá pegar todas os nomes (name), símbolos (symbol) e preços (price (intraday)) do site https://finance.yahoo.com/screener/new.
+##  Este projeto é um crawler desenvolvido em Python que utiliza Selenium, BeautifulSoup e orientação a objetos para capturar nomes (name), símbolos (symbol) e preços (price (intraday)) de ações do site [Yahoo Finance Stock Screener](https://finance.yahoo.com/screener/new). O usuário pode filtrar os resultados por região e a saída é gerada em um arquivo CSV.
 
-Deve ser passado o parâmetro de entrada "region" com o nome da região para ser usado como filtro. 
+## Pré-requisitos
 
-A saída deve ser um arquivo csv.
- 
+- Python 3.11.2
+- Bibliotecas Python:
+  - selenium
+  - beautifulsoup4
+  - pandas
 
-Exemplo buscando por Argentina:
+## Instalação
 
-"symbol","name","price"
+1. Clone o repositório:
+   ```sh
+   git clone https://github.com/JullyannaMaria/teste_python_jr.git
+   cd teste_python_jr
 
-"AMX.BA","América Móvil, S.A.B. de C.V.","2089.00"
-"NOKA.BA","Nokia Corporation","557.50"
+Contato
+Seu Nome - @JullyannaMaria - jullyannamaria@outlook.com
 
-...
+Link do projeto: https://github.com/JullyannaMaria/teste_python_jr.git
