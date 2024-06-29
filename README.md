@@ -19,7 +19,7 @@
    git clone https://github.com/JullyannaMaria/teste_python_jr.git
    cd teste_python_jr
 
-2. Para que o projeto funcione, baixe as dependências:
+2. Para que o projeto seja executado, baixe as dependências:
    ```sh 
    pip install -r requirements.txt
 
