@@ -20,9 +20,11 @@
    cd teste_python_jr
 
 2. Para que o projeto funcione, baixe as dependências:
+   ```sh 
    pip install -r requirements.txt
 
 3. Após baixar as dependências, execute o comando abaixo:
+   ```sh
    python crawler.py
 
 Contato
