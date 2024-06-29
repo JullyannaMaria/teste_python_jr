@@ -19,6 +19,12 @@
    git clone https://github.com/JullyannaMaria/teste_python_jr.git
    cd teste_python_jr
 
+2. Para que o projeto funcione, baixe as dependências:
+   pip install -r requirements.txt
+
+3. Após baixar as dependências, execute o comando abaixo:
+   python crawler.py
+
 Contato
 - @JullyannaMaria - jullyannamaria@outlook.com
 
