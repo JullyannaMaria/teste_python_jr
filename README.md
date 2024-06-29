@@ -1,6 +1,6 @@
-## Yahoo Finance Stock Screener Crawler
+## Teste: Desenvolvedor Python Jr
 
-##  Este projeto é um crawler desenvolvido em Python que utiliza Selenium, BeautifulSoup e orientação a objetos para capturar nomes (name), símbolos (symbol) e preços (price (intraday)) de ações do site [Yahoo Finance Stock Screener](https://finance.yahoo.com/screener/new). O usuário pode filtrar os resultados por região e a saída é gerada em um arquivo CSV.
+##  De acordo com o desafio proposto foi desenvolvido um crawler em Python que utiliza Selenium, BeautifulSoup, Pandas e a orientação a objetos para capturar nomes (name), símbolos (symbol) e preços (price) das ações do site fornecido: [Yahoo Finance Stock Screener](https://finance.yahoo.com/screener/new). O usuário pode filtrar os resultados por região e a saída é gerada em um arquivo CSV.
 
 ## Pré-requisitos
 
@@ -18,6 +18,6 @@
    cd teste_python_jr
 
 Contato
-Seu Nome - @JullyannaMaria - jullyannamaria@outlook.com
+- @JullyannaMaria - jullyannamaria@outlook.com
 
 Link do projeto: https://github.com/JullyannaMaria/teste_python_jr.git

@@ -31,7 +31,7 @@ import pandas as pd
 
 def get_stock_data():
     url = 'https://finance.yahoo.com/screener/new'
-    driver = webdriver.Chrome()  # Ou o caminho para seu WebDriver
+    driver = webdriver.Chrome()  # caminho para o WebDriver
     driver.get(url)
     
     # Espera o carregamento dos resultados
@@ -44,7 +44,7 @@ def get_stock_data():
     table = soup.find('table')
 
     # Encontra todas as linhas da tabela, ignorando a primeira linha (cabeçalho)
-    rows = table.find_all('tr')[1:]  # Ignora o cabeçalho
+    rows = table.find_all('tr')[1:]  # Aqui ignora o cabeçalho
     
     data = []
     for row in rows:
@@ -70,4 +70,4 @@ def save_to_csv(data):
 if __name__ == "__main__":
     data = get_stock_data()
     save_to_csv(data)
-    print('Dados salvos em stocks.csv')
+    print('Os dados foram salvos em stocks.csv')
