@@ -23,51 +23,45 @@ A entrega deve ser o link do github com o projeto. Imporante ter um ReadMe.
 Será considerado um diferencial a implementação de testes unitários.
 """
 from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from bs4 import BeautifulSoup
 import pandas as pd
 
-def get_stock_data():
-    url = 'https://finance.yahoo.com/screener/new'
-    driver = webdriver.Chrome()  # caminho para o WebDriver
-    driver.get(url)
-    
-    # Espera o carregamento dos resultados
-    WebDriverWait(driver, 40).until(EC.presence_of_element_located((By.TAG_NAME, 'table')))
-    
-    # Cria um objeto BeautifulSoup com o código fonte da página carregada
-    soup = BeautifulSoup(driver.page_source, 'html.parser')
+class CrawlerTest:
+    def __init__(self, url):
+        self.url = url
+        self.data = []
 
-    # Encontra a tabela HTML
-    table = soup.find('table')
+    def initialize_driver(self):
+        self.driver = webdriver.Chrome()  # Inicializa o WebDriver do Chrome
+        self.driver.implicitly_wait(40)  # Define um tempo de espera implícito de 10 segundos
+        self.driver.get(self.url)  # Abre o site de ações
 
-    # Encontra todas as linhas da tabela, ignorando a primeira linha (cabeçalho)
-    rows = table.find_all('tr')[1:]  # Aqui ignora o cabeçalho
-    
-    data = []
-    for row in rows:
-        # Encontra todas as células da linha
-        cols = row.find_all('td')
+    def scrape_data(self):
+        soup = BeautifulSoup(self.driver.page_source, 'html.parser')  # Analisa e cria um objeto BeautifulSoup com o código fonte da página carregada
+        table = soup.find('table')  # Encontra a tabela de ações
+        rows = table.find_all('tr')[1:]  # Encontra todas as linhas da tabela, ignorando a primeira linha (cabeçalho)
+        
+        for row in rows:
+            cols = row.find_all('td')
 
-        # Extrai o texto de cada célula
-        symbol = cols[0].text
-        name = cols[1].text
-        price = cols[2].text
+            # Extrai os textos de cada célula
+            symbol = cols[0].text
+            name = cols[1].text
+            price = cols[2].text
+            self.data.append([symbol, name, price])  # Adiciona os dados extraídos à lista
+        
+        self.driver.quit()  # Fecha o navegador
 
-        # Adiciona os dados extraídos à lista
-        data.append([symbol, name, price])
-    
-    driver.quit()
-    return data
-
-def save_to_csv(data):
-    # Cria um DataFrame do pandas e salva em um arquivo CSV
-    df = pd.DataFrame(data, columns=['symbol', 'name', 'price'])
-    df.to_csv('stocks.csv', index=False)
+    def save_to_csv(self, filename):
+        df = pd.DataFrame(self.data, columns=['symbol', 'name', 'price'])  # Cria um DataFrame
+        df.to_csv(filename, index=False)  # Salva em um arquivo CSV
 
 if __name__ == "__main__":
-    data = get_stock_data()
-    save_to_csv(data)
+    url = 'https://finance.yahoo.com/screener/new'  # URL utilizada (site de ações)
+
+    scraper = CrawlerTest(url)
+    scraper.initialize_driver()
+    scraper.scrape_data()
+    scraper.save_to_csv('stocks.csv')
+
     print('Os dados foram salvos em stocks.csv')
