@@ -35,7 +35,7 @@ def get_stock_data():
     driver.get(url)
     
     # Espera o carregamento dos resultados
-    WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.TAG_NAME, 'table')))
+    WebDriverWait(driver, 40).until(EC.presence_of_element_located((By.TAG_NAME, 'table')))
     
     # Cria um objeto BeautifulSoup com o código fonte da página carregada
     soup = BeautifulSoup(driver.page_source, 'html.parser')
